@@ -403,8 +403,8 @@ extern "C" {
         GGML_TYPE_Q5_K    = 13,
         GGML_TYPE_Q6_K    = 14,
         GGML_TYPE_Q8_K    = 15,
-        GGML_TYPE_IQ2_XXS = 16,
-        GGML_TYPE_IQ2_XS  = 17,
+        GGML_TYPE_IQ2_XXS   = 16,
+        GGML_TYPE_IQ2_XS    = 17,
         GGML_TYPE_IQ3_XXS = 18,
         GGML_TYPE_IQ1_S   = 19,
         GGML_TYPE_IQ4_NL  = 20,
@@ -429,7 +429,9 @@ extern "C" {
         GGML_TYPE_MXFP4   = 39, // MXFP4 (1 block)
         GGML_TYPE_NVFP4   = 40, // NVFP4 (4 blocks, E4M3 scale)
         GGML_TYPE_Q1_0    = 41,
-        GGML_TYPE_COUNT   = 42,
+        GGML_TYPE_PLANAR3_0 = 42,
+        GGML_TYPE_ISO3_0    = 43,
+        GGML_TYPE_COUNT,
     };
 
     // precision
