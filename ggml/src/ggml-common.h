@@ -449,6 +449,28 @@ typedef struct {
 } block_iq4_xs;
 static_assert(sizeof(block_iq4_xs) == sizeof(ggml_half) + sizeof(uint16_t) + QK_K/64 + QK_K/2, "wrong iq4_xs block size/padding");
 
+// PlanarQuant 3-bit: 2D Givens rotation + 2-bit quantized + 1-bit QJL
+#define QK_PLANAR3 128
+#define NL_PLANAR3 (QK_PLANAR3 / 16)
+#define NL_PLANAR3_VEC (QK_PLANAR3 / 4)
+typedef struct {
+    ggml_half  norm;
+    uint8_t    qs[QK_PLANAR3 / 4];
+    uint8_t    signs[QK_PLANAR3 / 8];
+} block_planar3_0;
+static_assert(sizeof(block_planar3_0) == sizeof(ggml_half) + QK_PLANAR3/4 + QK_PLANAR3/8, "wrong planar3_0 block size/padding");
+
+// IsoQuant 3-bit: quaternion 4D rotation + 2-bit quantized + 1-bit QJL
+#define QK_ISO3 128
+#define NL_ISO3 (QK_ISO3 / 16)
+#define NL_ISO3_VEC (QK_ISO3 / 4)
+typedef struct {
+    ggml_half  norm;
+    uint8_t    qs[QK_ISO3 / 4];
+    uint8_t    signs[QK_ISO3 / 8];
+} block_iso3_0;
+static_assert(sizeof(block_iso3_0) == sizeof(ggml_half) + QK_ISO3/4 + QK_ISO3/8, "wrong iso3_0 block size/padding");
+
 #endif // GGML_COMMON_DECL
 #endif // GGML_COMMON_DECL
 
